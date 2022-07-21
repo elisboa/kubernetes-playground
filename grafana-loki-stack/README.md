@@ -54,6 +54,6 @@ http://$(minikube ip)/grafana
 ```
 Promtail can be accessed by using `port-forward` for debugging purposes:
 ```
-kubectl port-forward daemonset/promtail 3101:3101
+kubectl -n monitoring port-forward daemonset/promtail 3101:3101
 
 ```
