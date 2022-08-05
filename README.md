@@ -9,3 +9,13 @@ A playground that uses Kong in DBLess mode, an example application and some rout
 
 ## prometheus-operator
 Prometheus Operator adapted for running on Minikube
+
+---
+
+## minikube tips
+If you want to run multiple minikubes simultaneosly, set this alias on your `.bashrc` or `.zshrc`:
+
+```
+alias minikube='minikube --profile $(basename $PWD)'
+```
+
