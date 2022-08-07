@@ -57,3 +57,9 @@ Promtail can be accessed by using `port-forward` for debugging purposes:
 kubectl -n monitoring port-forward daemonset/promtail 3101:3101
 
 ```
+
+## Metric generation
+You can generate some metrics by making some requests like this:
+```
+((for i in $(seq 1 9999) ; do curl http://$(minikube ip)/clock > /dev/null 2>&1 & done)) > /dev/null 2>&1
+```
