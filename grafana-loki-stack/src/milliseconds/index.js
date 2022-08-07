@@ -27,9 +27,9 @@ app.use(prometheusMiddleware({
     requestDurationBuckets: [0.01, 0.05, 0.1, 0.5, 1],
 }));
 
-router.get('/seconds', function(req, res, next) {
+router.get('/milliseconds', function(req, res, next) {
     var date = new Date()
-    var seconds = date.getSeconds()
+    var milliseconds = date.getMilliseconds()
 
     if (Math.random() < 0.5) {
         var err = new Error()
@@ -44,7 +44,7 @@ router.get('/seconds', function(req, res, next) {
     }
 
     res.status(200).json({ 
-        seconds: seconds
+        milliseconds: milliseconds
     })
 })
 
