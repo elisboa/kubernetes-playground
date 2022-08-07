@@ -149,7 +149,7 @@ router.get('/current-time', function (req, res, next) {
             })
         })
 
-    Promise.all([secondsPromise, minutesPromise, hoursPromise]).then(() => {
+    Promise.all([millisecondsPromise, secondsPromise, minutesPromise, hoursPromise]).then(() => {
         res.status(200).json({
             time: `${hours}:${minutes}:${seconds}.${milliseconds}`
         })

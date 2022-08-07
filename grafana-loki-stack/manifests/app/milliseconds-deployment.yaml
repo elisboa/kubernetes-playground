@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: seconds
-  name: seconds
+    app: milliseconds
+  name: milliseconds
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: seconds
+      app: milliseconds
   template:
     metadata:
       labels:
-        app: seconds
+        app: milliseconds
     spec:
       containers:
         - env:
             - name: PORT
               value: "80"
-          image: seconds
+          image: milliseconds
           imagePullPolicy: Never
-          name: seconds
+          name: milliseconds
           ports:
             - containerPort: 80
           resources: {}
@@ -30,12 +30,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: seconds
-  name: seconds
+    app: milliseconds
+  name: milliseconds
 spec:
   ports:
     - name: "80"
       port: 80
       targetPort: 80
   selector:
-    app: seconds
+    app: milliseconds
