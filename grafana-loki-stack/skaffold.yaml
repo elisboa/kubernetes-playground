@@ -14,5 +14,7 @@ build:
     context: src/minutes
   - image: seconds
     context: src/seconds
+  - image: milliseconds
+    context: src/milliseconds
   tagPolicy:
     gitCommit: {}
