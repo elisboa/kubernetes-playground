@@ -34,9 +34,39 @@ router.get('/current-time', function (req, res, next) {
         method: "Get"
     }
 
+
+    var milliseconds = 'xxx'
     var seconds = 'xx'
     var minutes = 'xx'
     var hours = 'xx'
+
+    let millisecondsPromise = fetch('http://milliseconds/v1/milliseconds', fetchSettings)
+        .then(res => {
+            if (!res.ok) {
+                res.text().then(text => {
+                    logger.log({
+                        level: 'error',
+                        message: `Milliseconds API response not OK: ${text}`
+                    })
+                })
+
+                return
+            }
+
+            return res.json()
+        })
+        .then(json => {
+            if (json) {
+                milliseconds = json.milliseconds
+            }
+        })
+        .catch(error => {
+            logger.log({
+                level: 'error',
+                message: `Error querying milliseconds API: ${error}`
+            })
+        })
+
 
     let secondsPromise = fetch('http://seconds/v1/seconds', fetchSettings)
         .then(res => {
@@ -121,7 +151,7 @@ router.get('/current-time', function (req, res, next) {
 
     Promise.all([secondsPromise, minutesPromise, hoursPromise]).then(() => {
         res.status(200).json({
-            time: `${hours}:${minutes}:${seconds}`
+            time: `${hours}:${minutes}:${seconds}.${milliseconds}`
         })
     })
 
