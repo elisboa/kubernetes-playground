@@ -28,7 +28,7 @@ router.get('/minutes', function(req, res, next) {
     var date = new Date()
     var minutes = date.getMinutes()
 
-    if (Math.random() < 0.25) {
+    if (Math.random() < 0.60) {
         res.status(500).json({
             message: "Internal server error"
         })

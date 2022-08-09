@@ -31,7 +31,7 @@ router.get('/milliseconds', function(req, res, next) {
     var date = new Date()
     var milliseconds = date.getMilliseconds()
 
-    if (Math.random() < 0.5) {
+    if (Math.random() < 0.99) {
         var err = new Error()
 
         logger.log('error', err.stack)
