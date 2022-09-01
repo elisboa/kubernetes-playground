@@ -23,7 +23,9 @@ spec:
           name: hours
           ports:
             - containerPort: 80
-          resources: {}
+          resources:
+            limits:
+              cpu: 1
       restartPolicy: Always
 ---
 apiVersion: v1
