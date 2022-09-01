@@ -31,7 +31,7 @@ router.get('/seconds', function(req, res, next) {
     var date = new Date()
     var seconds = date.getSeconds()
 
-    if (Math.random() < 0.60) {
+    if (Math.random() < 0.05) {
         var err = new Error()
 
         logger.log('error', err.stack)

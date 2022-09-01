@@ -28,7 +28,7 @@ router.get('/hours', function(req, res, next) {
     var date = new Date()
     var hours = date.getHours()
 
-    if (Math.random() < 0.24) {
+    if (Math.random() < 0.05) {
         res.status(500).json({
             message: "Internal server error"
         })
