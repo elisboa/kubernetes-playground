@@ -31,22 +31,12 @@ router.get('/milliseconds', function(req, res, next) {
     var date = new Date()
     var milliseconds = date.getMilliseconds()
 
-    if (Math.random() < 0.99) {
-        var err = new Error()
-
-        logger.log('error', err.stack)
-
-        res.status(500).json({
-            message: "Internal server error"
-        })
-
-        return
-    }
-
     res.status(200).json({ 
         milliseconds: milliseconds
     })
 })
+
+
 
 app.use('/v1/', router)
 
