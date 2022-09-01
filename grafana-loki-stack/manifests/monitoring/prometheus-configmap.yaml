@@ -15,6 +15,10 @@ data:
         static_configs:
           - targets: ['controller.clock:80']
 
+      - job_name: 'app_milliseconds'
+        static_configs:
+          - targets: ['milliseconds.clock:80']
+
       - job_name: 'app_seconds'
         static_configs:
           - targets: ['seconds.clock:80']
