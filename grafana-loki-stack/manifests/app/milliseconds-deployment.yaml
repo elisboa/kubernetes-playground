@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: milliseconds
+  name: milliseconds
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: milliseconds
+  template:
+    metadata:
+      labels:
+        app: milliseconds
+    spec:
+      containers:
+        - env:
+            - name: PORT
+              value: "80"
+          image: milliseconds
+          imagePullPolicy: Never
+          name: milliseconds
+          ports:
+            - containerPort: 80
+          resources: {}
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: milliseconds
+  name: milliseconds
+spec:
+  ports:
+    - name: "80"
+      port: 80
+      targetPort: 80
+  selector:
+    app: milliseconds
